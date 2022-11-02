@@ -10,30 +10,39 @@ import UIKit
 
 class PostViewController: UIViewController {
     
-    private let showPostButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Открыть счет", for: .normal)
-        button.setTitleColor(UIColor.systemGray6, for: .normal)
-        return button
-    }()
+    //let button = UITabBarItem(title: "Navi", image: UIImage(named: "money"), tag: 1)
+    // Создаю экземпляр поста
+    
+    let post = Post(tutle: "More Info")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
-        view.addSubview(showPostButton)
-        showPostButton.frame = CGRect(x: 100, y: 200, width: 50, height: 70)
-        addTarget()
+        view.backgroundColor = .black
+        showBarButton()
+        
+        
+      //  let barButton = UIBarButtonItem(title: post.tutle, style: .done, target: //self, action: #selector(showPost))
+    //    self.navigationItem.rightBarButtonItem  = barButton
+        
+  //  }
+  //  @objc func showPost() {
+        
+   //     let infoView = InfoViewController()
+        
+    //    navigationController?.pushViewController(infoView, animated: true)
+        
+        
+        
+        
     }
     
-    func addTarget() {
-        showPostButton.addTarget(self, action: #selector(pushTheButton), for: .touchUpInside)
-    }
+    private func showBarButton() {
+        let button = UIBarButtonItem(title: post.tutle, style: .plain, target: self, action: #selector(tapAction))
+            navigationItem.rightBarButtonItem = button
+        }
+        @objc private func tapAction() {
+            let forthVC = InfoViewController()
+            present(forthVC, animated: true)
+        }
     
-    @objc
-    func pushTheButton() {
-        
-        let extraView = PostViewController()
-        
-        navigationController?.pushViewController(extraView, animated: true)
-        
-    }
 }

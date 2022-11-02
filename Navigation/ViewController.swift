@@ -30,17 +30,23 @@ class FirstTabBarController: UITabBarController {
         twoRoots()
     }
     
+    // Задаем в качестве рутовых
+    
     private func twoRoots() {
         
         firstTabBarController = UINavigationController.init(rootViewController: FeedViewController())
         
         secondTabBarController = UINavigationController.init(rootViewController: ProfileViewController())
         
+        // Создаем массив в который пушим конроллеры
+        
         self.viewControllers = [firstTabBarController, secondTabBarController]
         
-        let bar1 = UITabBarItem(title: "Первый бар", image: UIImage(systemName: "airplane"), tag: 0)
+        // создаем экземпляры кнопок
         
-        let bar2 = UITabBarItem(title: "Второй бар", image: UIImage(systemName: "folder"), tag: 1)
+        let bar1 = UITabBarItem(title: "News", image: UIImage(systemName: "airplane"), tag: 0)
+        
+        let bar2 = UITabBarItem(title: "User", image: UIImage(systemName: "folder"), tag: 1)
         
         firstTabBarController.tabBarItem = bar1
         
@@ -52,4 +58,3 @@ class FirstTabBarController: UITabBarController {
     }
     
 }
-
