@@ -30,9 +30,11 @@ class InfoViewController: UIViewController {
         
         
     }
+    
     func action() {
         showPostMassage.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
     }
+    
     @objc
     func tapButton() {
         self.present(alert, animated: true, completion: nil)
@@ -42,7 +44,9 @@ class InfoViewController: UIViewController {
         let action = UIAlertAction(title: "Back", style: .default) {_ in
             print("Bye")
         }
-        let secondAction = UIAlertAction(title: "lets open account", style: .default)
+        let secondAction = UIAlertAction(title: "Log In", style: .default) {_ in
+            print("success")
+        }
         alert.addAction(action)
         alert.addAction(secondAction)
     }

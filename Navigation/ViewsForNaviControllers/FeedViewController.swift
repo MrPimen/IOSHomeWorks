@@ -10,7 +10,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    let post = Post(tutle: "Post")
+    private let secondPost = Post(tutle: "Open Post")
     
         // Создаем кнопку
     
@@ -27,6 +27,7 @@ class FeedViewController: UIViewController {
         view.addSubview(showPostButton)
         showPostButton.frame = CGRect(x: 100, y: 300, width: 150, height: 200)
         addTarget()
+        
     }
     
     func addTarget() {
@@ -37,6 +38,7 @@ class FeedViewController: UIViewController {
     func pushTheButton() {
         
         let extraView = PostViewController()
+        extraView.post = secondPost
         
         navigationController?.pushViewController(extraView, animated: true)
        
