@@ -8,17 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
-        
-        // Do any additional setup after loading the view.
+       
     }
-    
-
 
 }
+
 class FirstTabBarController: UITabBarController {
     
     var firstTabBarController : UINavigationController!
@@ -53,7 +52,7 @@ class FirstTabBarController: UITabBarController {
         secondTabBarController.tabBarItem = bar2
         
         UITabBar.appearance().tintColor = UIColor(red: 0/100.0, green: 81/200.0, blue: 211/312.0, alpha: 1.0)
-        UITabBar.appearance().backgroundColor = .yellow
+        UITabBar.appearance().backgroundColor = .white
         
     }
     

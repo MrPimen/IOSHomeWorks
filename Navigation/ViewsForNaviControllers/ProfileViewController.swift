@@ -9,8 +9,27 @@ import Foundation
 import UIKit
 
 class ProfileViewController: UIViewController {
-   
+
+    let profile = ProfileHeaderView()
+
+
     override func viewDidLoad() {
-        view.backgroundColor = .systemIndigo
+        super.viewDidLoad()
+        view.backgroundColor = .lightGray
+        view.addSubview(profile)
+        self.title = "Profile"
+        self.navigationController?.navigationBar.backgroundColor = .white
+    }
+    
+        
+        
+        
+        
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        profile.frame = view.frame
+        profile.showStatus()
+        
+       
     }
 }
