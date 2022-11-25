@@ -60,7 +60,7 @@ class ProfileHeaderView: UIView {
     }
     
     @objc func buttonPressed() {
-        status.text = statusText.text!
+        status.text = statusText.text ?? "No text"
         
         print(statusText.text!)
     }
