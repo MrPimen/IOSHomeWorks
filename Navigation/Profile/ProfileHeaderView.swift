@@ -10,15 +10,8 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    // Экзмепляр ИмайджВью
-    
-    let imageStatus = UIImageView(frame: CGRect(x: 0, y: 0, width: 450, height: 90))
-    
-    // Экземпляр текстФилда
-    
     private let statusText: UITextField = {
         let text = UITextField()
-        text.frame = CGRect(x: 200, y: 211, width: 175, height: 40)
         text.textColor = .black
         text.layer.borderColor = UIColor.black.cgColor
         text.layer.borderWidth = 1
@@ -30,22 +23,19 @@ class ProfileHeaderView: UIView {
         return text
     }()
     
-    let imageOfCat = UIImageView(frame: CGRect(x: 16, y: 110, width: 142, height: 142))
+    let imageOfCat = UIImageView()
     
     private let status: UILabel = {
         let statusPost = UILabel()
-        statusPost.frame = CGRect(x: 200, y: 168, width: 145, height: 35)
         statusPost.text = "I love kiticat and you"
         statusPost.textColor = .black
         statusPost.font = .systemFont(ofSize: 14, weight: .regular)
         return statusPost
     }()
-   
-    // Add button
+
     
     private let button: UIButton = {
         let button = UIButton()
-        button.frame = CGRect(x: 16, y: 272, width: 380, height: 50)
         button.layer.shadowRadius = 4
         button.layer.cornerRadius = 4
         button.layer.shadowOpacity = 0.7
@@ -57,6 +47,14 @@ class ProfileHeaderView: UIView {
         
     }()
     
+    private let nameOfUser: UILabel = {
+        let name = UILabel()
+        name.text = "Hungry fat cat"
+        name.font = .systemFont(ofSize: 18, weight: .bold)
+        return name
+    }()
+    
+    
     func showStatus() {
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
@@ -66,31 +64,53 @@ class ProfileHeaderView: UIView {
         
         print(statusText.text!)
     }
+     
+    // place for UI elements using AutoLayout. I'm gonna make it in one function for convenience
     
-
-    private let nameOfUser: UILabel = {
-        let name = UILabel()
-        name.text = "Hungry fat cat"
-        name.font = .systemFont(ofSize: 18, weight: .bold)
-        name.frame = CGRect(x: 200, y: 113, width: 150, height: 60)
-        return name
-    }()
+    func placeForImage() {
+        
+        self.addSubview(imageOfCat)
+        imageOfCat.translatesAutoresizingMaskIntoConstraints = false
+        imageOfCat.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
+        imageOfCat.heightAnchor.constraint(equalToConstant: 142).isActive = true
+        imageOfCat.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+        imageOfCat.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: 160).isActive = true
+        
+        self.addSubview(nameOfUser)
+        nameOfUser.translatesAutoresizingMaskIntoConstraints = false
+        nameOfUser.topAnchor.constraint(equalTo: self.topAnchor, constant: 27).isActive = true
+        nameOfUser.leadingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 30).isActive = true
+        nameOfUser.trailingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 172).isActive = true
+        nameOfUser.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        self.addSubview(status)
+        status.translatesAutoresizingMaskIntoConstraints = false
+        status.topAnchor.constraint(equalTo: self.topAnchor, constant: 68).isActive = true
+        status.leadingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 30).isActive = true
+        status.trailingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 172).isActive = true
+        status.heightAnchor.constraint(equalToConstant: 23).isActive = true
+        
+        self.addSubview(statusText)
+        statusText.translatesAutoresizingMaskIntoConstraints = false
+        statusText.topAnchor.constraint(equalTo: status.bottomAnchor, constant: 10).isActive = true
+        statusText.leadingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 30).isActive = true
+        statusText.trailingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 200).isActive = true
+        statusText.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        self.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.topAnchor.constraint(equalTo: imageOfCat.bottomAnchor, constant: 16).isActive = true
+        button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+        button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+    }
 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        
-        
+ 
         self.backgroundColor = .lightGray
-        self.addSubview(button)
-        self.addSubview(imageOfCat)
-        self.addSubview(nameOfUser)
-        self.addSubview(status)
-        self.addSubview(statusText)
-        self.addSubview(imageStatus)
-        imageStatus.backgroundColor = .white
-        
         
         imageOfCat.image = UIImage(named: "Image")
         imageOfCat.clipsToBounds = true

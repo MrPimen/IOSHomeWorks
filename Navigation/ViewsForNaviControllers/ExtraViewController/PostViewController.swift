@@ -10,9 +10,6 @@ import UIKit
 
 class PostViewController: UIViewController {
     
-    //let button = UITabBarItem(title: "Navi", image: UIImage(named: "money"), tag: 1)
-    // Создаю экземпляр поста
-    
     var post: Post?
     
     override func viewDidLoad() {
