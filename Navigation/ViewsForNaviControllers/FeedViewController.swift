@@ -38,7 +38,6 @@ class FeedViewController: UIViewController {
     
     private let stackView: UIStackView = {
         let showProfile = UIStackView()
-        //howProfile.alignment = .center
         showProfile.contentMode = .center
         showProfile.axis = .vertical
         showProfile.spacing = 10

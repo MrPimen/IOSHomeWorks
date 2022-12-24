@@ -10,64 +10,89 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private let secondButton: UIButton = {
-        let friendsButton = UIButton()
-        friendsButton.setTitle("Friends", for: .normal)
-        friendsButton.layer.shadowRadius = 4
-        friendsButton.layer.cornerRadius = 8
-        friendsButton.layer.shadowOpacity = 0.7
-        friendsButton.layer.shadowOffset = CGSize(width: 4, height: 4)
-        friendsButton.backgroundColor = .systemCyan
-        friendsButton.setTitleColor(UIColor.white, for: .normal)
-        return friendsButton
-    }()
-
     let profile = ProfileHeaderView()
     
-    private let imageForStatusBar: UIView = {
-        let paintStatusBar = UIView()
-        paintStatusBar.backgroundColor = .white
-        paintStatusBar.frame = CGRect(x: 0, y: 0, width: 960, height: 47)
-        return paintStatusBar
+    private let firstTableView: UITableView = {
+        let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SecondTableView")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
-        profile.translatesAutoresizingMaskIntoConstraints = false
-        self.title = "Profile"
-        self.navigationController?.navigationBar.backgroundColor = .white
-        constraints()
-        view.addSubview(imageForStatusBar)
-        placeForSecondButton()
-        
-        
-       
+        constraintForTableView()
+        view.backgroundColor = .white
+        firstTableView.delegate = self
+        firstTableView.dataSource = self
+        let tapView = UITapGestureRecognizer(target: self, action: #selector(hideKeaboard))
+        view.addGestureRecognizer(tapView)
+
     }
     
-    func placeForSecondButton() {
-        view.addSubview(secondButton)
-        secondButton.translatesAutoresizingMaskIntoConstraints = false
-        secondButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        secondButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        secondButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        secondButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+    @objc func hideKeaboard() {
+        view.endEditing(true)
+        
+        
     }
-    
-  
         
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        profile.showStatus()
-        profile.placeForImage()
         
-       
     }
-    func constraints() {
-        view.addSubview(profile)
-        profile.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        profile.heightAnchor.constraint(equalToConstant: 220).isActive = true
-        profile.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        profile.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
+    private func constraintForTableView() {
+        view.addSubview(firstTableView)
+        firstTableView.backgroundColor = .white
+        NSLayoutConstraint.activate([
+            firstTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            firstTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            firstTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            firstTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                ])
     }
 }
+
+
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataForCells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell", for: indexPath)
+            return cell
+        }
+        cell.fillImage(text: dataForCells[indexPath.row].image)
+        cell.fillauthor(author: dataForCells[indexPath.row].author)
+        cell.filldescription(textForDesk: dataForCells[indexPath.row].description)
+        cell.fillLikes(dataForLike: "Likes: \(dataForCells[indexPath.row].likes)")
+        cell.fillViews(dataForViews: "Views: \(dataForCells[indexPath.row].views)")
+        return cell
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+       return 240
+
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return profile
+    }
+}
+
+    
+

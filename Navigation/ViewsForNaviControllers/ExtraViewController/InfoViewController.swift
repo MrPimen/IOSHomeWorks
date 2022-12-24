@@ -51,7 +51,5 @@ class InfoViewController: UIViewController {
         alert.addAction(secondAction)
     }
     
-    
-    
 }
 
