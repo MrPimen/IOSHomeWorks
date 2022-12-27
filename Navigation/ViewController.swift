@@ -35,7 +35,7 @@ class FirstTabBarController: UITabBarController {
         
         firstTabBarController = UINavigationController.init(rootViewController: FeedViewController())
         
-        secondTabBarController = UINavigationController.init(rootViewController: ProfileViewController())
+        secondTabBarController = UINavigationController.init(rootViewController: LogInViewController())
         
         // Создаем массив в который пушим конроллеры
         

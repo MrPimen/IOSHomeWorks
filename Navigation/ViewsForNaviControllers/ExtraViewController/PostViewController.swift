@@ -11,7 +11,7 @@ import UIKit
 class PostViewController: UIViewController {
     
     var post: Post?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -19,8 +19,6 @@ class PostViewController: UIViewController {
         if let post = post {
             title = post.tutle
         }
-        
-        
         
     }
     
