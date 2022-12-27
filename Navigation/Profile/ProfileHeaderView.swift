@@ -115,7 +115,8 @@ class ProfileHeaderView: UIView {
             button.topAnchor.constraint(equalTo: imageOfCat.bottomAnchor, constant: 16),
             button.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             button.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            button.bottomAnchor.constraint(equalTo: imageOfCat.bottomAnchor, constant: 66),
+//            button.bottomAnchor.constraint(equalTo: imageOfCat.bottomAnchor, constant: 66),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
     }
 

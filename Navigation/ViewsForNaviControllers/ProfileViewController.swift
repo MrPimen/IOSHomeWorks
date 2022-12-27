@@ -35,7 +35,6 @@ class ProfileViewController: UIViewController {
     @objc func hideKeaboard() {
         view.endEditing(true)
         
-        
     }
         
     override func viewWillLayoutSubviews() {
@@ -83,11 +82,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-       return 240
 
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//       return 240
+//
+//    }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return profile
