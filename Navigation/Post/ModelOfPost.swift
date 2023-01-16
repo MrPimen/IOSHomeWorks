@@ -23,3 +23,29 @@ struct ModelPost {
     var views: Int
     
 }
+
+struct ImagesForCollection {
+    var image: String
+}
+
+var dataForCollection: [ImagesForCollection] {
+    return [ImagesForCollection(image: "Cat1"),
+    ImagesForCollection(image: "cat2"),
+    ImagesForCollection(image: "Cat3"),
+    ImagesForCollection(image: "cat4"),
+    ImagesForCollection(image: "cat5"),
+    ImagesForCollection(image: "cat7"),
+    ImagesForCollection(image: "cat8"),
+    ImagesForCollection(image: "cat9"),
+    ImagesForCollection(image: "cat10"),
+    ImagesForCollection(image: "cat11"),
+    ImagesForCollection(image: "cat12"),
+    ImagesForCollection(image: "cat13"),
+    ImagesForCollection(image: "cat14"),
+    ImagesForCollection(image: "cat15"),
+    ImagesForCollection(image: "cat16"),
+    ImagesForCollection(image: "cat17"),
+    ImagesForCollection(image: "cat18"),
+    ImagesForCollection(image: "cat19"),
+    ImagesForCollection(image: "cat20")]
+}
