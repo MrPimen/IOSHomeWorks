@@ -24,6 +24,7 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .yellow
         view.addSubview(showPostMassage)
+        navigationController?.navigationBar.isHidden = false
         showPostMassage.frame = CGRect(x: 100, y: 300, width: 150, height: 70)
         action()
         addAction()

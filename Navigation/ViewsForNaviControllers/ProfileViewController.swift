@@ -17,7 +17,9 @@ class ProfileViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SecondTableView")
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.allowsSelection = true
         return tableView
     }()
     
@@ -27,31 +29,29 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         firstTableView.delegate = self
         firstTableView.dataSource = self
-        let tapView = UITapGestureRecognizer(target: self, action: #selector(hideKeaboard))
-        view.addGestureRecognizer(tapView)
-
+  
     }
     
     @objc func hideKeaboard() {
         view.endEditing(true)
         
-        
     }
-        
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        navigationController?.navigationBar.isHidden = true
+        
     }
+        
+
+    
     
     private func constraintForTableView() {
         view.addSubview(firstTableView)
         firstTableView.backgroundColor = .white
         NSLayoutConstraint.activate([
-            firstTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            firstTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             firstTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             firstTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             firstTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -63,10 +63,19 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataForCells.count
+        if section == 1 {
+            return dataForCells.count
+        } else {
+            return 1
+        }
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let photoCell = PhotosTableViewCell()
+        
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell", for: indexPath)
@@ -77,20 +86,43 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.filldescription(textForDesk: dataForCells[indexPath.row].description)
         cell.fillLikes(dataForLike: "Likes: \(dataForCells[indexPath.row].likes)")
         cell.fillViews(dataForViews: "Views: \(dataForCells[indexPath.row].views)")
-        return cell
+        
+        if indexPath.section == 1 {
+            return cell
+        } else {
+            return photoCell
+        }
+        
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-       return 240
-
+        return 2
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return profile
+        if section == 0 {
+            return profile
+        }
+        return nil
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let photosGallery = PhotosViewController()
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 0 {
+            navigationController?.pushViewController(photosGallery, animated: true)
+        } else {
+            print("Hello")
+        }
+    }
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "hello"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat()
     }
 }
 
