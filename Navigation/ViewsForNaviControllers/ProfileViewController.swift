@@ -29,6 +29,12 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         firstTableView.delegate = self
         firstTableView.dataSource = self
+        #if DEBUG
+        view.backgroundColor = .white
+        #else
+        view.backgroundColor = .red
+        #endif
+
   
     }
     
@@ -43,8 +49,7 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
     }
-        
-
+    
     
     
     private func constraintForTableView() {
