@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D12957AF29812CCE000B7705 /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = D19AB50329806DF500A825E5 /* StorageService.docc */; };
-		D12957B129812D33000B7705 /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = D19AB50229806DF500A825E5 /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D12957B629812EB5000B7705 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12957B529812EB5000B7705 /* Post.swift */; };
-		D12957B729812EB5000B7705 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12957B529812EB5000B7705 /* Post.swift */; };
+		D12957BC2989AFE7000B7705 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D186245F2910FE340005BD40 /* InfoViewController.swift */; };
+		D12957C6299108D9000B7705 /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = D19AB50229806DF500A825E5 /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D12957CB29923426000B7705 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12957CA29923426000B7705 /* Post.swift */; };
+		D12957CF2992381C000B7705 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1862458290FE7FD0005BD40 /* FeedViewController.swift */; };
 		D137C7FA29422A44002B4C01 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D137C7F929422A43002B4C01 /* PostTableViewCell.swift */; };
 		D18009F0295B03EF00CE75E8 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18009EF295B03EF00CE75E8 /* PhotosTableViewCell.swift */; };
 		D18009F2295C698B00CE75E8 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18009F1295C698B00CE75E8 /* PhotosViewController.swift */; };
@@ -20,7 +21,6 @@
 		D1862448290EBF390005BD40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1862447290EBF390005BD40 /* ViewController.swift */; };
 		D186244D290EBF3E0005BD40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D186244C290EBF3E0005BD40 /* Assets.xcassets */; };
 		D1862450290EBF3E0005BD40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D186244E290EBF3E0005BD40 /* LaunchScreen.storyboard */; };
-		D1862459290FE7FD0005BD40 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1862458290FE7FD0005BD40 /* FeedViewController.swift */; };
 		D186245B290FE8A30005BD40 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D186245A290FE8A30005BD40 /* ProfileViewController.swift */; };
 		D186245E2910521D0005BD40 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D186245D2910521D0005BD40 /* PostViewController.swift */; };
 		D18624602910FE340005BD40 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D186245F2910FE340005BD40 /* InfoViewController.swift */; };
@@ -73,7 +73,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D12957B529812EB5000B7705 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		D12957CA29923426000B7705 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = StorageService.docc/Post.swift; sourceTree = "<group>"; };
 		D137C7F929422A43002B4C01 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		D18009EF295B03EF00CE75E8 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		D18009F1295C698B00CE75E8 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -213,9 +213,9 @@
 		D19AB50129806DF500A825E5 /* StorageService */ = {
 			isa = PBXGroup;
 			children = (
+				D12957CA29923426000B7705 /* Post.swift */,
 				D19AB50229806DF500A825E5 /* StorageService.h */,
 				D19AB50329806DF500A825E5 /* StorageService.docc */,
-				D12957B529812EB5000B7705 /* Post.swift */,
 			);
 			path = StorageService;
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D12957B129812D33000B7705 /* StorageService.h in Headers */,
+				D12957C6299108D9000B7705 /* StorageService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,11 +378,10 @@
 				D1862444290EBF390005BD40 /* AppDelegate.swift in Sources */,
 				D1862469291922670005BD40 /* ProfileHeaderView.swift in Sources */,
 				D186245B290FE8A30005BD40 /* ProfileViewController.swift in Sources */,
-				D1862459290FE7FD0005BD40 /* FeedViewController.swift in Sources */,
+				D12957CF2992381C000B7705 /* FeedViewController.swift in Sources */,
 				D18009F0295B03EF00CE75E8 /* PhotosTableViewCell.swift in Sources */,
 				D18624602910FE340005BD40 /* InfoViewController.swift in Sources */,
 				D18009F5295CB7A300CE75E8 /* PhotosCollectionViewCell.swift in Sources */,
-				D12957B629812EB5000B7705 /* Post.swift in Sources */,
 				D18009F2295C698B00CE75E8 /* PhotosViewController.swift in Sources */,
 				D1A71B602934C8620051B3A4 /* LogInViewController.swift in Sources */,
 				D1862446290EBF390005BD40 /* SceneDelegate.swift in Sources */,
@@ -395,7 +394,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19AB50429806DF500A825E5 /* StorageService.docc in Sources */,
-				D12957B729812EB5000B7705 /* Post.swift in Sources */,
+				D12957BC2989AFE7000B7705 /* InfoViewController.swift in Sources */,
+				D12957CB29923426000B7705 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +618,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -651,6 +652,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import StorageService
 
 class PostViewController: UIViewController {
     
@@ -30,5 +31,5 @@ class PostViewController: UIViewController {
             let infoView = InfoViewController()
             present(infoView, animated: true)
         }
-    
+
 }
