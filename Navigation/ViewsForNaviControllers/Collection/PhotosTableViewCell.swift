@@ -24,7 +24,6 @@ class PhotosTableViewCell: UITableViewCell {
     private let firstImageForCell: UIImageView = {
         let imageForCell = UIImageView()
         imageForCell.image = UIImage(named: "Cat1")
-        //imageForCell.contentMode = .scaleAspectFit
         imageForCell.layer.cornerRadius = 6
         imageForCell.clipsToBounds = true
         imageForCell.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +32,6 @@ class PhotosTableViewCell: UITableViewCell {
     
     private let secondImageForCell: UIImageView = {
         let imageForCell = UIImageView()
-        //imageForCell.contentMode = .scaleAspectFit
         imageForCell.image = UIImage(named: "cat2")
         imageForCell.layer.cornerRadius = 6
         imageForCell.clipsToBounds = true
@@ -43,7 +41,6 @@ class PhotosTableViewCell: UITableViewCell {
     
     private let thirdImageForCell: UIImageView = {
         let imageForCell = UIImageView()
-        //imageForCell.contentMode = .scaleAspectFit
         imageForCell.image = UIImage(named: "Cat3")
         imageForCell.layer.cornerRadius = 6
         imageForCell.clipsToBounds = true
@@ -53,7 +50,6 @@ class PhotosTableViewCell: UITableViewCell {
     
     private let forthImageForCell: UIImageView = {
         let imageForCell = UIImageView()
-        //imageForCell.contentMode = .scaleAspectFit
         imageForCell.image = UIImage(named: "cat4")
         imageForCell.layer.cornerRadius = 6
         imageForCell.clipsToBounds = true
