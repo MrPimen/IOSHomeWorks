@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 public struct Post {
     public var tutle: String
     public init(tutle: String) {

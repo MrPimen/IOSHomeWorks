@@ -7,8 +7,11 @@
 
 import Foundation
 import UIKit
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
+    
+    let example = ImageProcessor()
     
     
     private let prewiewText: UILabel = {
@@ -55,18 +58,24 @@ class PostTableViewCell: UITableViewCell {
     }()
     
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentMode = .scaleAspectFit
         backgroundColor = .white
         addSubviews()
         cellConstraints()
+     
         
     }
     
     func fillImage(text: String) {
-        imageForCell.image = UIImage(named: text)
+        //imageForCell.image = UIImage(named: text)
+        let filter = ImageProcessor()
+        filter.processImage(sourceImage: UIImage(named: text)!, filter: .posterize, completion: {image in
+            self.imageForCell.image = image
+        })
+        
+    
     }
     
     func fillauthor(author: String) {
@@ -84,6 +93,7 @@ class PostTableViewCell: UITableViewCell {
     func fillViews(dataForViews: String) {
         views.text = dataForViews
     }
+    
     
     func cellConstraints() {
         NSLayoutConstraint.activate([
@@ -121,9 +131,11 @@ class PostTableViewCell: UITableViewCell {
         contentView.addSubview(views)
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 
     
 }

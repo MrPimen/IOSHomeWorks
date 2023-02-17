@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class ProfileHeaderView: UIView {
     
@@ -111,36 +112,77 @@ class ProfileHeaderView: UIView {
         self.addSubview(button)
         self.addSubview(imageOfCat)
         self.addSubview(backToAvatar)
+        imageOfCat.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.width.equalTo(144)
+            make.top.equalToSuperview().inset(16)
+            make.height.equalTo(144)
+        }
+        
+        nameOfUser.snp.makeConstraints { make in
+            make.leading.equalTo(imageOfCat.snp.trailing).inset(-30)
+            make.width.equalTo(150)
+            make.top.equalToSuperview().inset(27)
+            make.height.equalTo(25)
+            
+        }
+        
+        status.snp.makeConstraints { make in
+            make.leading.equalTo(imageOfCat.snp.trailing).inset(-30)
+            make.width.equalTo(150)
+            make.top.equalToSuperview().inset(60)
+            make.height.equalTo(25)
+        }
+        
+        statusText.snp.makeConstraints { make in
+            make.top.equalTo(status.snp.bottom).inset(-20)
+            make.leading.equalTo(imageOfCat.snp.trailing).inset(-30)
+            make.width.equalTo(150)
+            make.height.equalTo(25)
+        }
+        
+        button.snp.makeConstraints { make in
+            make.top.equalTo(imageOfCat.snp.bottom).inset(-16)
+            make.bottom.equalToSuperview().inset(16)
+            make.leading.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview().inset(16)
+        }
+        
+        backToAvatar.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(16)
+            make.trailing.equalToSuperview().inset(16)
+        }
         
         NSLayoutConstraint.activate([
+//            self.heightAnchor.constraint(equalToConstant: 220)
             
-            imageOfCat.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            imageOfCat.heightAnchor.constraint(equalToConstant: 142),
-            imageOfCat.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            imageOfCat.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: 160),
+//            imageOfCat.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+//            imageOfCat.heightAnchor.constraint(equalToConstant: 142),
+//            imageOfCat.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+//            imageOfCat.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: 160),
+//
+//            nameOfUser.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
+//            nameOfUser.leadingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 30),
+//            nameOfUser.trailingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 172),
+//            nameOfUser.heightAnchor.constraint(equalToConstant: 25),
             
-            nameOfUser.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
-            nameOfUser.leadingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 30),
-            nameOfUser.trailingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 172),
-            nameOfUser.heightAnchor.constraint(equalToConstant: 25),
+//            status.topAnchor.constraint(equalTo: self.topAnchor, constant: 68),
+//            status.leadingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 30),
+//            status.trailingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 172),
+//            status.heightAnchor.constraint(equalToConstant: 23),
             
-            status.topAnchor.constraint(equalTo: self.topAnchor, constant: 68),
-            status.leadingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 30),
-            status.trailingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 172),
-            status.heightAnchor.constraint(equalToConstant: 23),
+//            statusText.topAnchor.constraint(equalTo: status.bottomAnchor, constant: 10),
+//            statusText.leadingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 30),
+//            statusText.trailingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 200),
+//            statusText.heightAnchor.constraint(equalToConstant: 35),
             
-            statusText.topAnchor.constraint(equalTo: status.bottomAnchor, constant: 10),
-            statusText.leadingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 30),
-            statusText.trailingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 200),
-            statusText.heightAnchor.constraint(equalToConstant: 35),
-            
-            button.topAnchor.constraint(equalTo: imageOfCat.bottomAnchor, constant: 16),
-            button.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            button.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            
-            backToAvatar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            backToAvatar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16)
+//            button.topAnchor.constraint(equalTo: imageOfCat.bottomAnchor, constant: 16),
+//            button.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+//            button.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+//            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+//
+//            backToAvatar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+//            backToAvatar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
     }
     
