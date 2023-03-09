@@ -10,6 +10,16 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    let user: User
+    init(user: User) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("Hi")
+    }
+    
+
     let profile = ProfileHeaderView()
     
     private let firstTableView: UITableView = {
@@ -29,6 +39,8 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .white
         firstTableView.delegate = self
         firstTableView.dataSource = self
+        dataForProfile()
+        
         #if DEBUG
         view.backgroundColor = .white
         #else
@@ -44,13 +56,22 @@ class ProfileViewController: UIViewController {
     }
     
     
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         navigationController?.navigationBar.isHidden = true
         
     }
     
-    
+    func dataForProfile() {
+        
+        profile.imageOfCat.image = user.avatar
+        profile.status.text = user.status
+        profile.nameOfUser.text = user.fullName
+
+
+    }
+
     
     private func constraintForTableView() {
         view.addSubview(firstTableView)
