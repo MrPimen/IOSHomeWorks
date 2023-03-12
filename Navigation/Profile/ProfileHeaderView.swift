@@ -11,7 +11,8 @@ import UIKit
 class ProfileHeaderView: UIView {
     
     var beginPointAvatar = CGPoint()
-    
+    var userProfile = User(login: "FatCat", fullName: "Britain Cat", status: "Love girls and Objective C")
+
     private lazy var backGroundView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         view.alpha = 0
@@ -30,9 +31,9 @@ class ProfileHeaderView: UIView {
     
     }()
     
-    private let imageOfCat: UIImageView = {
+    let imageOfCat: UIImageView = {
         let imageOfCat = UIImageView()
-        imageOfCat.image = UIImage(named: "Image")
+        //imageOfCat.image = UIImage(named: "Image")
         imageOfCat.clipsToBounds = true
         imageOfCat.layer.borderWidth = 3
         imageOfCat.layer.borderColor = UIColor.white.cgColor
@@ -59,9 +60,9 @@ class ProfileHeaderView: UIView {
     }()
     
     
-    private let status: UILabel = {
+    let status: UILabel = {
         let statusPost = UILabel()
-        statusPost.text = "I love kiticat and you"
+        //statusPost.text = "I love kiticat and you"
         statusPost.textColor = .black
         statusPost.font = .systemFont(ofSize: 14, weight: .regular)
         statusPost.translatesAutoresizingMaskIntoConstraints = false
@@ -83,9 +84,9 @@ class ProfileHeaderView: UIView {
         
     }()
     
-    private let nameOfUser: UILabel = {
+    let nameOfUser: UILabel = {
         let name = UILabel()
-        name.text = "Hungry fat cat"
+        //name.text = "Hungry fat cat"
         name.font = .systemFont(ofSize: 18, weight: .bold)
         name.translatesAutoresizingMaskIntoConstraints = false
         return name
@@ -126,7 +127,7 @@ class ProfileHeaderView: UIView {
             
             status.topAnchor.constraint(equalTo: self.topAnchor, constant: 68),
             status.leadingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 30),
-            status.trailingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 172),
+            status.trailingAnchor.constraint(equalTo: imageOfCat.trailingAnchor, constant: 205),
             status.heightAnchor.constraint(equalToConstant: 23),
             
             statusText.topAnchor.constraint(equalTo: status.bottomAnchor, constant: 10),
@@ -144,6 +145,14 @@ class ProfileHeaderView: UIView {
         ])
     }
     
+//    func dataForProfile() {
+//        let profile = User(login: "FatCat", fullName: "Hungry Fat Cat", status: "Love girls and Objective C")
+//        imageOfCat.image = profile.avatar
+//        status.text = profile.status
+//        nameOfUser.text = profile.fullName
+//
+//    }
+//
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -154,7 +163,7 @@ class ProfileHeaderView: UIView {
         animateAvatar()
         let tapView = UITapGestureRecognizer(target: self, action: #selector(hideKeaboard))
         self.addGestureRecognizer(tapView)
-        
+        //imageOfCat.image = userProfile.avatar
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

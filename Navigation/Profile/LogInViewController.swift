@@ -10,6 +10,24 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+//    var user = CurrentUserService()
+//    init(user: CurrentUserService = CurrentUserService()) {
+//        self.user = user
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//
+//    var testUser = TestUserService()
+//    init(user: CurrentUserService = CurrentUserService(), testUser: TestUserService = TestUserService()) {
+//        self.user = user
+//        self.testUser = testUser
+//        super.init(nibName: nil, bundle: nil)
+//    }
+    
+    var userService: UserService?
+    
     private lazy var scrollView: UIScrollView = {
        let scrollView = UIScrollView()
        scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -151,9 +169,28 @@ class LogInViewController: UIViewController {
     }
     
     @objc func openProfile() {
-        let profileView = ProfileViewController()
-        navigationController?.pushViewController(profileView, animated: true)
+        let alert = UIAlertController(title: "Error", message: "Please, check your login and try again", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        
+        #if DEBUG
+        let user = TestUserService().testUser
+        
+        #else
+        let user = CurrentUserService().user
 
+        #endif
+        if logInTextField.text == user.login {
+            let profileView = ProfileViewController(user: user)
+//            let profile = ProfileHeaderView()
+//            profile.imageOfCat.image = user.user.avatar
+//            profile.status.text = user.user.status
+//            profile.nameOfUser.text = user.user.fullName
+            navigationController?.pushViewController(profileView, animated: true)
+        } else {
+            present(alert, animated: true)
+        }
+        
     }
     
     
